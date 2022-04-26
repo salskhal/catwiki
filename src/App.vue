@@ -2,6 +2,7 @@
 <div class="container">
   <NavBar />
   <router-view />
+  <Footer class="footer"/>
 </div>
   <!-- <nav>
     <router-link to="/">Home</router-link> |
@@ -11,6 +12,7 @@
 
 <script setup>
 import NavBar from "./components/NavBar.vue";
+import Footer from "./components/Footer.vue";
 </script> 
 
 <style>
@@ -31,5 +33,26 @@ body{
 
 .container{
   padding-inline: 80px;
+  display: flex;
+  flex-direction: column;
 }
+
+.footer{
+  margin-top: auto;
+}
+
+
+/* responsive design */
+@media screen and (max-width: 800px){
+  .container{
+    padding-inline: 60px;
+  }
+}
+
+@media screen and (max-width: 650px){
+  .container{
+    padding-inline: 20px;
+  }
+}
+
 </style>

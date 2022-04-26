@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <!-- landing markup -->
     <div class="landing">
       <img
         src="../assets/CatwikiLogo.svg"
@@ -7,18 +8,30 @@
         class="landing-image"
       />
       <p class="landing-header">Get to know more about your cat breed</p>
-      <Btn message="Get Started" styleing="success" class="get"/>
-      <!-- <form class="search" @submit.prevent="">
-        <input type="text" placeholder="Enter your breed" />
-        <button>🔍</button>
-      </form> -->
-      
+      <Btn message="Get Started" styleing="success" class="get" />
     </div>
+<!-- most searched markup -->
     <div class="most-searched">
-      <h5>Most Searched Breed</h5>
+      <p class="searches"><span class="underline">Most S</span>earched Breed</p>
       <div class="discover--more">
         <h3 class="discover">66+ Breeds For you to discover</h3>
-        <p class="more">see more</p>
+        <router-link class="more" to="/about">
+          <p >see more</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </router-link>
       </div>
       <div class="breed-grid">
         <div class="grid-item" v-for="breed in breeds" :key="breed.id">
@@ -27,13 +40,24 @@
         </div>
       </div>
     </div>
+  <!-- why you should have a cat -->
+  <div class="why">
+    <div class="why-content">
+      <h4 class="why-content__header">
+        Why should you have a cat?
+      </h4>
+    </div>
+    <div class="why-image">
+
+    </div>
+  </div>
   </div>
 </template>
 
 <script setup>
 // const { ref }=require("@vue/reactivity");
 import { ref, onMounted } from "vue";
-import Btn from "../components/Btn.vue"
+import Btn from "../components/Btn.vue";
 
 const breeds = ref([]);
 
@@ -78,49 +102,103 @@ onMounted(() => {
   margin-bottom: 30px;
 }
 
-.landing-header{
+.landing-header {
   font-size: 24px;
   width: 360px;
   margin-bottom: 30px;
 }
-/* .search {
-  display: flex;
-  padding: 10px;
-  width: 300px;
-  background: white;
-  border-radius: 59px;
-}
 
-.search input {
-  flex-grow: 2;
-  border: none;
-  outline: none;
-}
-
-.search button {
-  border: none;
-  background: none;
-} */
-
-.get{
+.get {
   width: 120px;
 }
+
+/* most searched styling */
 
 .most-searched {
   color: #291507;
   padding: 20px;
   background: #e3e1dc;
+  padding-inline: 80px;
+}
+
+.searches {
+  color: #291507;
+  margin-bottom: 50px;
+}
+.underline {
+  border-bottom: 2px solid #4d270c;
+}
+
+.discover--more {
+  display: flex;
+}
+
+.discover{
+  font-size: 2.5rem;
+  width: 450px;
+}
+.more {
+  margin-left: auto;
+  display: flex;
+  text-decoration: none;
+  color: #291507;
+  align-self: center;
+}
+
+.more svg{
+  width: 20px;
+  margin-left: 10px;
 }
 
 .breed-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  margin-top: 30px;
 }
 
 .breed-image {
   width: 200px;
   height: 200px;
+  border-radius: 20px;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 1000px) {
+  .home {
+    height: 130vh;
+  }
+  /* .landing {
+    background: url("../assets/HeroImagemd.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  } */
+}
+@media screen and (max-width: 850px) {
+  .home {
+    height: 110vh;
+    grid-template-rows: 1fr 1.8fr;
+  }
+  .landing {
+    background: url("../assets/HeroImagesm.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .home {
+    height: 100vh;
+    grid-template-rows: 1fr 2fr;
+  }
+  .landing {
+    background: url("../assets/HeroImagesm.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
 </style>
