@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- landing markup -->
-    <div class="landing">
+    <div class="landing shared">
       <img
         src="../assets/CatwikiLogo.svg"
         alt="landing image"
@@ -10,13 +10,13 @@
       <p class="landing-header">Get to know more about your cat breed</p>
       <Btn message="Get Started" styleing="success" class="get" />
     </div>
-<!-- most searched markup -->
-    <div class="most-searched">
+    <!-- most searched markup -->
+    <div class="most-searched shared">
       <p class="searches"><span class="underline">Most S</span>earched Breed</p>
       <div class="discover--more">
         <h3 class="discover">66+ Breeds For you to discover</h3>
         <router-link class="more" to="/about">
-          <p >see more</p>
+          <p>SEE MORE</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6"
@@ -40,17 +40,36 @@
         </div>
       </div>
     </div>
-  <!-- why you should have a cat -->
-  <div class="why">
+    <!-- why you should have a cat -->
+  </div>
+  <div class="why shared">
     <div class="why-content">
-      <h4 class="why-content__header">
-        Why should you have a cat?
-      </h4>
+      <h3 class="why-content__header">Why should you have a cat?</h3>
+      <p class="why--content__description">
+        Having a cat around you can actually trigger the release of calming
+        chemicals in your body which lower your stress and anxiety leves
+      </p>
+      <router-link class="see-why" to="/why">
+        <p>READ MORE</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </router-link>
     </div>
     <div class="why-image">
-
+      <img src="../assets/wiki.png" alt="" />
     </div>
-  </div>
   </div>
 </template>
 
@@ -83,6 +102,12 @@ onMounted(() => {
   grid-template-rows: 1fr 1fr;
   /* align-items: center; */
 }
+
+
+.shared{
+  padding-inline: 80px;
+}
+
 
 .landing {
   padding-inline: 80px;
@@ -133,7 +158,7 @@ onMounted(() => {
   display: flex;
 }
 
-.discover{
+.discover {
   font-size: 2.5rem;
   width: 450px;
 }
@@ -145,7 +170,8 @@ onMounted(() => {
   align-self: center;
 }
 
-.more svg{
+.more svg,
+.see-why svg {
   width: 20px;
   margin-left: 10px;
 }
@@ -164,17 +190,56 @@ onMounted(() => {
   border-radius: 20px;
 }
 
+.grid-item{
+  cursor: pointer;
+}
+
+.why {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+  align-content: center;
+  color: #291507;
+}
+
+.why-content {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.why-content__header {
+  font-size: 3rem;
+}
+
+.why--content__description{
+  width: 400px;
+  margin: 30px 0;
+}
+
+.see-why {
+  display: flex;
+  text-decoration: none;
+  color: #291507;
+}
+
+.why-image img {
+  width: 100%;
+}
+
 /* Responsive styling */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
   .home {
     height: 130vh;
   }
-  /* .landing {
-    background: url("../assets/HeroImagemd.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  } */
+
+  .breed-image {
+    width: 150px;
+    height: 150px;
+  }
 }
 @media screen and (max-width: 850px) {
   .home {
@@ -186,6 +251,14 @@ onMounted(() => {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  .shared{
+    padding-inline: 50px;
+  }
+
+  .why{
+    grid-template-columns: 1fr;
   }
 }
 
@@ -200,5 +273,26 @@ onMounted(() => {
     background-repeat: no-repeat;
     background-position: center;
   }
+
+  .shared{
+    padding-inline: 30px;
+  }
+
+  .landing-image{
+    width: 200px; 
+    margin-bottom: 20px;
+  }
+
+  .landing-header{
+    font-size: 20px;
+  }
 }
+
+@media screen and (max-width: 450px){
+  
+  .landing-header{
+    font-size: 15px;
+    width: 200px;
+  }
+} 
 </style>
